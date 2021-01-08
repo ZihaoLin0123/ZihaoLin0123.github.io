@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Zihao Lin&#39;s Blog</title>
+    <link>https://ZihaoLin0123.github.io/</link>
+    <description>Recent content on Zihao Lin&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>&amp;copy; 2016. All rights reserved.</copyright>
+    <lastBuildDate>Fri, 08 Jan 2021 12:15:04 -0500</lastBuildDate><atom:link href="https://ZihaoLin0123.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>My First Blog</title>
+      <link>https://ZihaoLin0123.github.io/post/my-first-blog/</link>
+      <pubDate>Fri, 08 Jan 2021 12:15:04 -0500</pubDate>
+      
+      <guid>https://ZihaoLin0123.github.io/post/my-first-blog/</guid>
+      <description>Hello World! </description>
+    </item>
+    
+  </channel>
+</rss>
