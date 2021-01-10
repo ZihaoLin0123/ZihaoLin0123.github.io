@@ -7,7 +7,16 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&amp;copy; 2016. All rights reserved.</copyright>
-    <lastBuildDate>Fri, 08 Jan 2021 12:15:04 -0500</lastBuildDate><atom:link href="https://ZihaoLin0123.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 10 Jan 2021 11:09:35 -0500</lastBuildDate><atom:link href="https://ZihaoLin0123.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Test Table Pic</title>
+      <link>https://ZihaoLin0123.github.io/post/test-table-pic/</link>
+      <pubDate>Sun, 10 Jan 2021 11:09:35 -0500</pubDate>
+      
+      <guid>https://ZihaoLin0123.github.io/post/test-table-pic/</guid>
+      <description>  columnName1 columnName2 ... columnName99    dataValue1 dataValue2 ... dataValue99   dataValue1 dataValue2 ... dataValue99   dataValue1 dataValue2 ... dataValue99   ... and so on    </description>
+    </item>
+    
     <item>
       <title>My First Blog</title>
       <link>https://ZihaoLin0123.github.io/post/my-first-blog/</link>
