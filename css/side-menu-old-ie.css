@@ -188,7 +188,7 @@ small screens.
     font-size: 10px;
     /* change this value to increase/decrease button size */
     z-index: 10;
-    width: 2em;
+    width: 6em;
     height: auto;
     padding: 2.1em 1.6em;
 }
