@@ -7,7 +7,7 @@
   <meta name="description" content="">
   <meta name="generator" content="Hugo 0.80.0" />
 
-  <title>Test Table Pic &middot; Zihao Lin&#39;s Blog</title>
+  <title>[Papers Notes] From Word Embeddings to Document Distances &middot; Zihao Lin&#39;s Blog</title>
 
     
 
@@ -222,7 +222,7 @@
 
 
 <div class="header">
-  <h1>Test Table Pic</h1>
+  <h1>[Papers Notes] From Word Embeddings to Document Distances</h1>
   <h2></h2>
 </div>
 <div class="content">
@@ -231,7 +231,7 @@
 
   <div>
     <i class="fa fa-calendar fa-fw"></i>
-    <time>10 Jan 2021, 11:09</time>
+    <time>12 Jan 2021, 19:00</time>
   </div>
 
   
@@ -244,13 +244,9 @@
   <div>
     <i class="fa fa-tags fa-fw"></i>
     
-      <a class="post-taxonomy-tag" href="https://ZihaoLin0123.github.io/tags/go">go</a>&nbsp;&#47;
+      <a class="post-taxonomy-tag" href="https://ZihaoLin0123.github.io/tags/word-embeddings">word embeddings</a>&nbsp;&#47;
     
-      <a class="post-taxonomy-tag" href="https://ZihaoLin0123.github.io/tags/golang">golang</a>&nbsp;&#47;
-    
-      <a class="post-taxonomy-tag" href="https://ZihaoLin0123.github.io/tags/hugo">hugo</a>&nbsp;&#47;
-    
-      <a class="post-taxonomy-tag" href="https://ZihaoLin0123.github.io/tags/development">development</a>
+      <a class="post-taxonomy-tag" href="https://ZihaoLin0123.github.io/tags/wmd">WMD</a>
     
   </div>
   
@@ -258,90 +254,45 @@
 
 </div>
 
-  
-
-
-<table class="pure-table pure-table-striped">
-  <thead><tr>
-    
-      <th>columnName1</th>
-    
-      <th>columnName2</th>
-    
-      <th>...</th>
-    
-      <th>columnName99</th>
-    
-  </thead></tr>
-  <tbody>
-  
-    <tr>
-      
-      
-        <td>dataValue1</td>
-      
-        <td>dataValue2</td>
-      
-        <td>...</td>
-      
-        <td>dataValue99</td>
-      
-    </tr>
-  
-    <tr>
-      
-      
-        <td>dataValue1</td>
-      
-        <td>dataValue2</td>
-      
-        <td>...</td>
-      
-        <td>dataValue99</td>
-      
-    </tr>
-  
-    <tr>
-      
-      
-        <td>dataValue1</td>
-      
-        <td>dataValue2</td>
-      
-        <td>...</td>
-      
-        <td>dataValue99</td>
-      
-    </tr>
-  
-  </tbody>
-</table>
-<p>test image</p>
-<figure>
-    <img src="https://ZihaoLin0123.github.io/images/test1.jpeg"/> <figcaption>
-            <h4>Steve Francia</h4>
-        </figcaption>
-</figure>
-
-<p>test katex</p>
-<p>$$\varphi = 1+\frac{1} {1+\frac{1} {1+\frac{1} {1+\cdots} } }$$</p>
-<p>test deploy.sh</p>
+  <h2 id="preface">Preface</h2>
+<p>This article is a summary of a paper – From Word Embeddings to Document Distances – published by Washington University in St. Louis in 2015. The authors of this paper are: [Matt Kusner] (<a href="https://mkusner.github.io/">https://mkusner.github.io/</a> &ldquo;Matt Kusner&rdquo;), Yu Sun, Nicholas I. Kolkin and Kilian Q. Weinberger. This article will summarize the background, algorithm and result of the paper. Besides, this article assumes that readers have some groundings in NLP therefore it is not going to explain in detail some concepts in NLP such as Bag of words, TF-IDF or Word2Vec. (Actually, this is because I am lazy……) If you are interested in them, please search other articles.</p>
+<h2 id="introduction">Introduction</h2>
+<p>Representing the distance between two documents has many applications in industry. On social media, it is used in news, products or movie recommendation system. In a company, people use document distance in document retrieval. In order to calculate the distance, scientists created many ways to represent documents. Among them, bag of words (BOW) and term frequency-inverse document frequency (TF-IDF) are two most common ways. However, they have some drawbacks: near-orthogonality and failure to capture the distance between individual words.</p>
+<p>For example, there are two sentences:
+Obama speaks to the media in Illinois.
+The President greets the press in Chicago.</p>
+<p>BOW and TF-IDF will treat these two sentences as totally two different sentences between which the similarity is 0 because they have no same words (excepting some stopwords). However, they convey nearly the same information.</p>
+<p>There have been numerous methods that attempt to circumvent this problem by learning a latent low-dimensional representation of documents, such as Latent Semantic Indexing (LSI), Latent Dirichlet Allocation (LDA) and competing variants of BOW/TF-IDF, however, although they achieve a more coherent document representation than BOW, they often do not improve the empirical performance of BOW on distance-based tasks (e.g., nearest-neighbor classifiers).</p>
+<p>This paper introduces another metric for the distance between text documents, called Word Mover’s Distance (WMD) which is based on word2vec embeddings. Word2vec embedding has a powerful property that it can preserve the semantic relationships on word vectors. For example, vec(Berlin) – vec(Germany) + vec(France) is close to vec(Pairs). This paper represents the documents as weighted point cloud of embedded words and the distance between two text documents is the minimum cumulative distance that words from document A need to travel to match exactly the point cloud of document B.</p>
+<p>The WMD distance has several intriguing properties:</p>
+<ol>
+<li>hyper-parameter free and straight-forward to understand and use</li>
+<li>interpretable</li>
+<li>high retrieval accuracy – it outperforms all 7 state-of-the-art alternative document distances in 6 of 8 real world classification tasks.</li>
+</ol>
+<h2 id="algorithm-word-movers-distance">Algorithm: Word Mover&rsquo;s Distance</h2>
+<h3 id="basic-definition">Basic Definition</h3>
+<ol>
+<li>Normalized bag-of-words (nBOW) representation
+(a) $$D_i = frac{c_i}{\sum^n_{j=1}c_j}$$, if word i appears $$c_i$$ times in the document;
+(b) $$\textbf{d}$$ belongs to $$R^n$$, represents the text vectors of one document;</li>
+</ol>
 
   
   <h4><i class="far fa-share" aria-hidden="true"></i>&nbsp;Share!</h4>
 
 <ul class="share-buttons">
-	<li><a href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fZihaoLin0123.github.io%2fpost%2ftest-table-pic%2f" target="_blank" title="Share on Facebook"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i><span class="sr-only">Share on Facebook</span></a>
+	<li><a href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fZihaoLin0123.github.io%2fpost%2ffrom-word-embeddings-to-document-distances%2f" target="_blank" title="Share on Facebook"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i><span class="sr-only">Share on Facebook</span></a>
 	</li>&nbsp;&nbsp;&nbsp;
-	<li><a href="https://twitter.com/intent/tweet?source=https%3a%2f%2fZihaoLin0123.github.io%2fpost%2ftest-table-pic%2f&via=HorribleGeek" target="_blank" title="Tweet"><i class="fab fa-twitter-square fa-fw" aria-hidden="true"></i><span class="sr-only">Tweet</span></a>
+	<li><a href="https://twitter.com/intent/tweet?source=https%3a%2f%2fZihaoLin0123.github.io%2fpost%2ffrom-word-embeddings-to-document-distances%2f&via=HorribleGeek" target="_blank" title="Tweet"><i class="fab fa-twitter-square fa-fw" aria-hidden="true"></i><span class="sr-only">Tweet</span></a>
 	</li>&nbsp;&nbsp;&nbsp;
-	<li><a href="https://plus.google.com/share?url=https%3a%2f%2fZihaoLin0123.github.io%2fpost%2ftest-table-pic%2f" target="_blank" title="Share on Google+"><i class="fab fa-google-plus-square fa-fw" aria-hidden="true"></i><span class="sr-only">Share on Google+</span></a>
+	<li><a href="https://plus.google.com/share?url=https%3a%2f%2fZihaoLin0123.github.io%2fpost%2ffrom-word-embeddings-to-document-distances%2f" target="_blank" title="Share on Google+"><i class="fab fa-google-plus-square fa-fw" aria-hidden="true"></i><span class="sr-only">Share on Google+</span></a>
 	</li>&nbsp;&nbsp;&nbsp;
-	<li><a href="http://www.tumblr.com/share?v=3&u=https%3a%2f%2fZihaoLin0123.github.io%2fpost%2ftest-table-pic%2f" target="_blank" title="Post to Tumblr"><i class="fab fa-tumblr-square fa-fw" aria-hidden="true"></i><span class="sr-only">Post to Tumblr</span></a>
+	<li><a href="http://www.tumblr.com/share?v=3&u=https%3a%2f%2fZihaoLin0123.github.io%2fpost%2ffrom-word-embeddings-to-document-distances%2f" target="_blank" title="Post to Tumblr"><i class="fab fa-tumblr-square fa-fw" aria-hidden="true"></i><span class="sr-only">Post to Tumblr</span></a>
 	</li>&nbsp;&nbsp;&nbsp;
-	<li><a href="http://pinterest.com/pin/create/button/?url=https%3a%2f%2fZihaoLin0123.github.io%2fpost%2ftest-table-pic%2f" target="_blank" title="Pin it"><i class="fab fa-pinterest-square fa-fw" aria-hidden="true"></i><span class="sr-only">Pin it</span></a>
+	<li><a href="http://pinterest.com/pin/create/button/?url=https%3a%2f%2fZihaoLin0123.github.io%2fpost%2ffrom-word-embeddings-to-document-distances%2f" target="_blank" title="Pin it"><i class="fab fa-pinterest-square fa-fw" aria-hidden="true"></i><span class="sr-only">Pin it</span></a>
 	</li>&nbsp;&nbsp;&nbsp;
-	<li><a href="http://www.reddit.com/submit?url=https%3a%2f%2fZihaoLin0123.github.io%2fpost%2ftest-table-pic%2f" target="_blank" title="Submit to Reddit"><i class="fab fa-reddit-square fa-fw" aria-hidden="true"></i><span class="sr-only">Submit to Reddit</span></a>
+	<li><a href="http://www.reddit.com/submit?url=https%3a%2f%2fZihaoLin0123.github.io%2fpost%2ffrom-word-embeddings-to-document-distances%2f" target="_blank" title="Submit to Reddit"><i class="fab fa-reddit-square fa-fw" aria-hidden="true"></i><span class="sr-only">Submit to Reddit</span></a>
 	</li>
 </ul>
 
@@ -375,13 +326,13 @@
 <div class="prev-next-post pure-g">
   <div class="pure-u-1-24" style="text-align: left;">
     
-    <a href="https://ZihaoLin0123.github.io/post/my-first-blog/"><i class="fa fa-chevron-left"></i></a>
+    <a href="https://ZihaoLin0123.github.io/post/test-table-pic/"><i class="fa fa-chevron-left"></i></a>
     
   </div>
   <div class="pure-u-10-24">
     
     <nav class="prev">
-      <a href="https://ZihaoLin0123.github.io/post/my-first-blog/">My First Blog</a>
+      <a href="https://ZihaoLin0123.github.io/post/test-table-pic/">Test Table Pic</a>
     </nav>
     
   </div>
@@ -390,14 +341,8 @@
   </div>
   <div class="pure-u-10-24">
     
-    <nav class="next">
-      <a href="https://ZihaoLin0123.github.io/post/from-word-embeddings-to-document-distances/">[Papers Notes] From Word Embeddings to Document Distances</a>
-    </nav>
-    
   </div>
   <div class="pure-u-1-24" style="text-align: right;">
-    
-    <a href="https://ZihaoLin0123.github.io/post/from-word-embeddings-to-document-distances/"><i class="fa fa-chevron-right"></i></a>
     
   </div>
 </div>

@@ -7,7 +7,16 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&amp;copy; 2016. All rights reserved.</copyright>
-    <lastBuildDate>Sun, 10 Jan 2021 11:09:35 -0500</lastBuildDate><atom:link href="https://ZihaoLin0123.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 12 Jan 2021 19:00:23 -0500</lastBuildDate><atom:link href="https://ZihaoLin0123.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>[Papers Notes] From Word Embeddings to Document Distances</title>
+      <link>https://ZihaoLin0123.github.io/post/from-word-embeddings-to-document-distances/</link>
+      <pubDate>Tue, 12 Jan 2021 19:00:23 -0500</pubDate>
+      
+      <guid>https://ZihaoLin0123.github.io/post/from-word-embeddings-to-document-distances/</guid>
+      <description>Preface This article is a summary of a paper – From Word Embeddings to Document Distances – published by Washington University in St. Louis in 2015. The authors of this paper are: [Matt Kusner] (https://mkusner.github.io/ &amp;ldquo;Matt Kusner&amp;rdquo;), Yu Sun, Nicholas I. Kolkin and Kilian Q. Weinberger. This article will summarize the background, algorithm and result of the paper. Besides, this article assumes that readers have some groundings in NLP therefore it is not going to explain in detail some concepts in NLP such as Bag of words, TF-IDF or Word2Vec.</description>
+    </item>
+    
     <item>
       <title>Test Table Pic</title>
       <link>https://ZihaoLin0123.github.io/post/test-table-pic/</link>
