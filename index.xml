@@ -25,7 +25,7 @@
       <guid>https://ZihaoLin0123.github.io/post/test-table-pic/</guid>
       <description>columnName1 columnName2 ... columnName99    dataValue1 dataValue2 ... dataValue99   dataValue1 dataValue2 ... dataValue99   dataValue1 dataValue2 ... dataValue99    test image
   Steve Francia   test katex
-$\varphi = 1+\frac{1} {1+\frac{1} {1+\frac{1} {1+\cdots} } }$
+$$\varphi = 1+\frac{1} {1+\frac{1} {1+\frac{1} {1+\cdots} } }$$
 test deploy.sh</description>
     </item>
     
