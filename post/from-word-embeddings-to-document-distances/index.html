@@ -297,20 +297,19 @@
 <li><span  class="math">\(D_i = \frac{c_i}{\sum^n_{j=1}c_j}\)</span>, if word i appears <span  class="math">\(c_i\)</span> times in the document;</li>
 <li><span  class="math">\(\textbf{d}\in\textbf{R}^n\)</span>, represents the text vectors of one document;</li>
 <li><span  class="math">\(\textbf{d}^{'}\in\textbf{R}^n\)</span> is the comparable document;</li>
-<li>Think of the vector <span  class="math">\(\textbf{b}\)</span> as a point on the n-1 dimensional simplex of word distributions where n is the number of words in corpus.
-<br></li>
+<li>Think of the vector <span  class="math">\(\textbf{b}\)</span> as a point on the n-1 dimensional simplex of word distributions where n is the number of words in corpus.</li>
 </ul></li>
 
 <li><p>Word travel cost</p>
 
 <ul>
 <li><span  class="math">\(c(i,j) = ||\textbf{x}_i - \textbf{x}_j||_2\)</span> is the Euclidean distance in the word2vec embedding space</li>
-<li>test aligned equation:
-<span  class="math">\(
-\min \limits_{\textbf{T}\geq 0} &\sum^n_{i,j=1}\textbf{T}_{ij}c(i,j)\\
+
+<li><p>test aligned equation:</p>
+
+<p><span  class="math">\[\min \limits_{\textbf{T}\geq 0} &\sum^n_{i,j=1}\textbf{T}_{ij}c(i,j)\\
 \text{subject to:} &\sum^n_{j=1}\textbf{T}_{ij}=d_i\hspace{1em}\forall i \in {1,...,n}\\
-&\sum^n_{i=1}\textbf{T}_{ij}=d^{'}_j\hspace{1em}\forall j \in {1,...,n}
-\)</span></li>
+&\sum^n_{i=1}\textbf{T}_{ij}=d^{'}_j\hspace{1em}\forall j \in {1,...,n}\]</span></p></li>
 </ul></li>
 </ol>
 
