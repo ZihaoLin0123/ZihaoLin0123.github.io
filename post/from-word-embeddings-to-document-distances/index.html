@@ -294,31 +294,43 @@
 </div>
 
   <h2 id="preface">Preface</h2>
+
 <p>This article is a summary of a paper – From Word Embeddings to Document Distances – published by Washington University in St. Louis in 2015. The authors of this paper are: <a href="https://mkusner.github.io/">Matt Kusner</a>, Yu Sun, Nicholas I. Kolkin and Kilian Q. Weinberger. This article will summarize the background, algorithm and result of the paper. Besides, this article assumes that readers have some groundings in NLP therefore it is not going to explain in detail some concepts in NLP such as Bag of words, TF-IDF or Word2Vec. (Actually, this is because I am lazy……) If you are interested in them, please search other articles.</p>
+
 <h2 id="introduction">Introduction</h2>
+
 <p>Representing the distance between two documents has many applications in industry. On social media, it is used in news, products or movie recommendation system. In a company, people use document distance in document retrieval. In order to calculate the distance, scientists created many ways to represent documents. Among them, bag of words (BOW) and term frequency-inverse document frequency (TF-IDF) are two most common ways. However, they have some drawbacks: near-orthogonality and failure to capture the distance between individual words.</p>
+
 <p>For example, there are two sentences:
 Obama speaks to the media in Illinois.
 The President greets the press in Chicago.</p>
+
 <p>BOW and TF-IDF will treat these two sentences as totally two different sentences between which the similarity is 0 because they have no same words (excepting some stopwords). However, they convey nearly the same information.</p>
+
 <p>There have been numerous methods that attempt to circumvent this problem by learning a latent low-dimensional representation of documents, such as Latent Semantic Indexing (LSI), Latent Dirichlet Allocation (LDA) and competing variants of BOW/TF-IDF, however, although they achieve a more coherent document representation than BOW, they often do not improve the empirical performance of BOW on distance-based tasks (e.g., nearest-neighbor classifiers).</p>
+
 <p>This paper introduces another metric for the distance between text documents, called Word Mover’s Distance (WMD) which is based on word2vec embeddings. Word2vec embedding has a powerful property that it can preserve the semantic relationships on word vectors. For example, vec(Berlin) – vec(Germany) + vec(France) is close to vec(Pairs). This paper represents the documents as weighted point cloud of embedded words and the distance between two text documents is the minimum cumulative distance that words from document A need to travel to match exactly the point cloud of document B.</p>
+
 <p>The WMD distance has several intriguing properties:</p>
+
 <ol>
 <li>hyper-parameter free and straight-forward to understand and use</li>
 <li>interpretable</li>
 <li>high retrieval accuracy – it outperforms all 7 state-of-the-art alternative document distances in 6 of 8 real world classification tasks.</li>
 </ol>
-<h2 id="algorithm-word-movers-distance">Algorithm: Word Mover&rsquo;s Distance</h2>
+
+<h2 id="algorithm-word-movers-distance">Algorithm: Word Mover's Distance</h2>
+
 <h3 id="basic-definition">Basic Definition</h3>
+
 <ol>
 <li>Normalized bag-of-words (nBOW) representation
+
 <ul>
-<li>$$D_i = \frac{c_i}{\sum^n_{j=1}c_j}$$, if word i appears $c_i$ times in the document;</li>
-<li>$\textbf{d}$ belongs to $R^n$, represents the text vectors of one document;</li>
+<li><span  class="math">\(D_i = \frac{c_i}{\sum^n_{j=1}c_j}\)</span>, if word i appears $c_i$ times in the document;</li>
+<li><span  class="math">\(\textbf{d}\)</span> belongs to $R^n$, represents the text vectors of one document;</li>
 <li>test $c_i$</li>
-</ul>
-</li>
+</ul></li>
 </ol>
 
   
@@ -472,6 +484,8 @@ The President greets the press in Chicago.</p>
       color: #515151;
   }
   </style>
+
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.0-rc.1/dist/katex.min.js" integrity="sha384-483A6DwYfKeDa0Q52fJmxFXkcPCFfnXMoXblOkJ4JcA8zATN6Tm78UNL72AKk+0O" crossorigin="anonymous"></script>
 
 
 
