@@ -5,6 +5,34 @@
     <link>https://ZihaoLin0123.github.io/categories/</link>
     <description>Recent content in Categories on Zihao Lin&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language><atom:link href="https://ZihaoLin0123.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
+    <language>en-us</language>
+    <lastBuildDate>Sun, 21 Feb 2021 17:14:13 -0500</lastBuildDate><atom:link href="https://ZihaoLin0123.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>activation functions</title>
+      <link>https://ZihaoLin0123.github.io/categories/activation-functions/</link>
+      <pubDate>Sun, 21 Feb 2021 17:14:13 -0500</pubDate>
+      
+      <guid>https://ZihaoLin0123.github.io/categories/activation-functions/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Deep Learning</title>
+      <link>https://ZihaoLin0123.github.io/categories/deep-learning/</link>
+      <pubDate>Sun, 21 Feb 2021 17:14:13 -0500</pubDate>
+      
+      <guid>https://ZihaoLin0123.github.io/categories/deep-learning/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>PyTorch</title>
+      <link>https://ZihaoLin0123.github.io/categories/pytorch/</link>
+      <pubDate>Sun, 21 Feb 2021 17:14:13 -0500</pubDate>
+      
+      <guid>https://ZihaoLin0123.github.io/categories/pytorch/</guid>
+      <description></description>
+    </item>
+    
   </channel>
 </rss>
