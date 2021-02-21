@@ -16,7 +16,7 @@
 &lt;p&gt;This is a summary of many kinds of activation functions.&lt;/p&gt;
 &lt;h2 id=&#34;activation-functions&#34;&gt;Activation Functions&lt;/h2&gt;
 &lt;h3 id=&#34;1-sigmoid-function&#34;&gt;1. Sigmoid Function&lt;/h3&gt;
-&lt;p&gt;$\sigma (x) = \frac{1}{1+e^{-x}}$&lt;/p&gt;
+&lt;p&gt;$$\sigma (x) = \frac{1}{1+e^{-x}}$$&lt;/p&gt;
 </description>
         </item>
         <item>
