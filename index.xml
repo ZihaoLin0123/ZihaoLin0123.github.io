@@ -20,7 +20,7 @@
 
 &lt;h3 id=&#34;1-sigmoid-function&#34;&gt;1. Sigmoid Function&lt;/h3&gt;
 
-&lt;p&gt;[\sigma (x) = \frac{1}{1+e^{-x}}]&lt;/p&gt;
+&lt;p&gt;&lt;span  class=&#34;math&#34;&gt;\[\sigma (x) = \frac{1}{1+e^{-x}}\]&lt;/span&gt;&lt;/p&gt;
 </description>
         </item>
         <item>
