@@ -21,6 +21,25 @@
 &lt;h3 id=&#34;1-sigmoid-function&#34;&gt;1. Sigmoid Function&lt;/h3&gt;
 
 &lt;p&gt;&lt;span  class=&#34;math&#34;&gt;\[\sigma (x) = \frac{1}{1+e^{-x}}\]&lt;/span&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;span  class=&#34;math&#34;&gt;\[\frac{\partial \sigma (x)}{\partial x} = \sigma (x)(1-\sigma (x))\]&lt;/span&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Output range: [0, 1]&lt;/li&gt;
+&lt;li&gt;metrics: Historically popular since they have nice interpretation as a saturating “firing rate” of a neuron.&lt;/li&gt;
+&lt;li&gt;Demetrics:
+
+&lt;ol&gt;
+&lt;li&gt;Saturated neurons &amp;quot;kill&amp;quot; the gradients. When x becomes extremely large or negative large, the gradient will become nearly zero. When x equals to zero, it will be fine.&lt;/li&gt;
+&lt;li&gt;Sigmoid outputs are not zero-centered. When the inputs are always positive, the gradient is the multiply of the local gradients of parameters W, which equals to X, and the upstream gradient coming down; therefore, the sign of the gradient will always be the sign of upstream gradient. This means the gradients on W are always going to move in the same direction.
+&lt;span  class=&#34;math&#34;&gt;\[\frac{\partial L}{\partial \omega} = \sigma (\sum_i \omega_ix_i + b)(1-\sigma (\sum_i \omega_ix_i + b))x \cdot upstream_gradient\]&lt;/span&gt;&lt;/li&gt;
+&lt;/ol&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;reference&#34;&gt;Reference&lt;/h3&gt;
+
+&lt;p&gt;[1] &lt;a href=&#34;http://cs231n.stanford.edu/slides/2020/lecture_7.pdf&#34;&gt;http://cs231n.stanford.edu/slides/2020/lecture_7.pdf&lt;/a&gt;
+[2]&lt;/p&gt;
 </description>
         </item>
         <item>
