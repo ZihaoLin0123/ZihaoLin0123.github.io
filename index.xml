@@ -18,7 +18,7 @@
 
 &lt;h2 id=&#34;activation-functions&#34;&gt;Activation Functions&lt;/h2&gt;
 
-&lt;h3 id=&#34;1-sigmoid-function&#34;&gt;1. Sigmoid Function&lt;/h3&gt;
+&lt;h3 id=&#34;i-sigmoid-function&#34;&gt;I. Sigmoid Function&lt;/h3&gt;
 
 &lt;p&gt;&lt;span  class=&#34;math&#34;&gt;\[\sigma (x) = \frac{1}{1+e^{-x}}\]&lt;/span&gt;&lt;/p&gt;
 
@@ -33,7 +33,24 @@
 &lt;li&gt;Saturated neurons &amp;quot;kill&amp;quot; the gradients. When x becomes extremely large or negative large, the gradient will become nearly zero. When x equals to zero, it will be fine.&lt;/li&gt;
 &lt;li&gt;Sigmoid outputs are not zero-centered. When the inputs are always positive, the gradient is the multiply of the local gradients of parameters W, which equals to X, and the upstream gradient coming down; therefore, the sign of the gradient will always be the sign of upstream gradient. This means the gradients on W are always going to move in the same direction.
 &lt;span  class=&#34;math&#34;&gt;\[\frac{\partial L}{\partial \omega} = \sigma (\sum_i \omega_ix_i + b)(1-\sigma (\sum_i \omega_ix_i + b))x \cdot upstream_gradient\]&lt;/span&gt;&lt;/li&gt;
+&lt;li&gt;&lt;span  class=&#34;math&#34;&gt;\[exp()\]&lt;/span&gt; is a bit compute expensive.&lt;/li&gt;
 &lt;/ol&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;ii-tanhx&#34;&gt;II. Tanh(x)&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Output range:&lt;/li&gt;
+&lt;li&gt;Metrics: zero centered&lt;/li&gt;
+&lt;li&gt;Demetrics: still kills gradients when saturated.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;iii-relu&#34;&gt;III. ReLU&lt;/h3&gt;
+
+&lt;p&gt;&lt;span  class=&#34;math&#34;&gt;\[f(x) = max(0, x)\]&lt;/span&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Output range: [0, &lt;span  class=&#34;math&#34;&gt;\[\inf\]&lt;/span&gt;]&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h3 id=&#34;reference&#34;&gt;Reference&lt;/h3&gt;

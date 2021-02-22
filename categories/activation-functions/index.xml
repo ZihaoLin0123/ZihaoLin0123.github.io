@@ -14,7 +14,7 @@
       
       <guid>https://ZihaoLin0123.github.io/p/deep-learning-1-activation-function/</guid>
       <description>Introduction This is a summary of many kinds of activation functions.
-Activation Functions 1. Sigmoid Function \[\sigma (x) = \frac{1}{1+e^{-x}}\]
+Activation Functions I. Sigmoid Function \[\sigma (x) = \frac{1}{1+e^{-x}}\]
 \[\frac{\partial \sigma (x)}{\partial x} = \sigma (x)(1-\sigma (x))\]
  Output range: [0, 1] metrics: Historically popular since they have nice interpretation as a saturating “firing rate” of a neuron. Demetrics:  Saturated neurons &amp;quot;kill&amp;quot; the gradients. When x becomes extremely large or negative large, the gradient will become nearly zero. When x equals to zero, it will be fine.</description>
     </item>
