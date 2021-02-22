@@ -64,7 +64,7 @@
 &lt;li&gt;Not zero-centered outputs&lt;/li&gt;
 &lt;li&gt;An annoyance: in the negative region, the gradients will become zero.&lt;/li&gt;
 &lt;li&gt;Sometimes the ReLU will be dead.
-&lt;figure&gt;&lt;img src=&#34;ReLU2.jpg&#34; alt=&#34;Dead ReLU&#34;&gt;&lt;/figure&gt;&lt;/li&gt;
+&lt;figure&gt;&lt;img src=&#34;ReLU2.jpg = 100&#34; alt=&#34;Dead ReLU&#34;&gt;&lt;/figure&gt;&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
