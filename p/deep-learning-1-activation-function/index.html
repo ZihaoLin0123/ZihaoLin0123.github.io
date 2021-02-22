@@ -255,7 +255,7 @@
 <li>Saturated neurons &quot;kill&quot; the gradients. When x becomes extremely large or negative large, the gradient will become nearly zero. When x equals to zero, it will be fine.</li>
 <li>Sigmoid outputs are not zero-centered. When the inputs are always positive, the gradient is the multiply of the local gradients of parameters W, which equals to X, and the upstream gradient coming down; therefore, the sign of the gradient will always be the sign of upstream gradient. This means the gradients on W are always going to move in the same direction.
 <span  class="math">\[\frac{\partial L}{\partial \omega} = \sigma (\sum_i \omega_ix_i + b)(1-\sigma (\sum_i \omega_ix_i + b))x \cdot upstream_gradient\]</span></li>
-<li><span  class="math">\[exp()\]</span> is a bit compute expensive.</li>
+<li>(exp()) is a bit compute expensive.</li>
 </ol></li>
 </ul>
 
