@@ -29,12 +29,12 @@
 &lt;li&gt;metrics: Historically popular since they have nice interpretation as a saturating “firing rate” of a neuron.&lt;/li&gt;
 &lt;li&gt;Demetrics:
 
-&lt;ol&gt;
+&lt;ul&gt;
 &lt;li&gt;Saturated neurons &amp;quot;kill&amp;quot; the gradients. When x becomes extremely large or negative large, the gradient will become nearly zero. When x equals to zero, it will be fine.&lt;/li&gt;
 &lt;li&gt;Sigmoid outputs are not zero-centered. When the inputs are always positive, the gradient is the multiply of the local gradients of parameters W, which equals to X, and the upstream gradient coming down; therefore, the sign of the gradient will always be the sign of upstream gradient. This means the gradients on W are always going to move in the same direction.
 &lt;span  class=&#34;math&#34;&gt;\[\frac{\partial L}{\partial \omega} = \sigma (\sum_i \omega_ix_i + b)(1-\sigma (\sum_i \omega_ix_i + b))x \cdot \text(upstream_gradient)\]&lt;/span&gt;&lt;/li&gt;
 &lt;li&gt;$exp()$ is a bit compute expensive.&lt;/li&gt;
-&lt;/ol&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h3 id=&#34;ii-tanhx&#34;&gt;II. Tanh(x)&lt;/h3&gt;
@@ -51,6 +51,21 @@
 
 &lt;ul&gt;
 &lt;li&gt;Output range: [0, $+\infty$]&lt;/li&gt;
+&lt;li&gt;Metrics:
+
+&lt;ul&gt;
+&lt;li&gt;Does not saturate (in +region).&lt;/li&gt;
+&lt;li&gt;It is very computationally efficient.&lt;/li&gt;
+&lt;li&gt;It converges much faster than sigmoid/tanh in practive. (e.g. 6x)&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Demetrics:
+
+&lt;ul&gt;
+&lt;li&gt;Not zero-centered outputs&lt;/li&gt;
+&lt;li&gt;An annoyance: in the negative region, the gradients will become zero.&lt;/li&gt;
+&lt;li&gt;Sometimes the ReLU will be dead.
+&lt;figure&gt;&lt;img src=&#34;ReLU2.jpg&#34; alt=&#34;Dead ReLU&#34;&gt;&lt;/figure&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h3 id=&#34;reference&#34;&gt;Reference&lt;/h3&gt;
