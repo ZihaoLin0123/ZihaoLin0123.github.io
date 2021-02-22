@@ -234,67 +234,7 @@
 </header>
 
     <section class="article-content">
-    <h2 id="introduction">Introduction</h2>
-
-<p>This is a summary of many kinds of activation functions.</p>
-
-<h2 id="activation-functions">Activation Functions</h2>
-
-<h3 id="i-sigmoid-function">I. Sigmoid Function</h3>
-
-<p><span  class="math">\[\sigma (x) = \frac{1}{1+e^{-x}}\]</span></p>
-
-<p><span  class="math">\[\frac{\partial \sigma (x)}{\partial x} = \sigma (x)(1-\sigma (x))\]</span></p>
-
-<ul>
-<li>Output range: [0, 1]</li>
-<li>metrics: Historically popular since they have nice interpretation as a saturating “firing rate” of a neuron.</li>
-<li>Demetrics:
-
-<ul>
-<li>Saturated neurons &quot;kill&quot; the gradients. When x becomes extremely large or negative large, the gradient will become nearly zero. When x equals to zero, it will be fine.</li>
-<li>Sigmoid outputs are not zero-centered. When the inputs are always positive, the gradient is the multiply of the local gradients of parameters W, which equals to X, and the upstream gradient coming down; therefore, the sign of the gradient will always be the sign of upstream gradient. This means the gradients on W are always going to move in the same direction.
-<span  class="math">\[\frac{\partial L}{\partial \omega} = \sigma (\sum_i \omega_ix_i + b)(1-\sigma (\sum_i \omega_ix_i + b))x \cdot \text(upstream_gradient)\]</span></li>
-<li>$exp()$ is a bit compute expensive.</li>
-</ul></li>
-</ul>
-
-<h3 id="ii-tanhx">II. Tanh(x)</h3>
-
-<ul>
-<li>Output range:</li>
-<li>Metrics: zero centered</li>
-<li>Demetrics: still kills gradients when saturated.</li>
-</ul>
-
-<h3 id="iii-relu">III. ReLU</h3>
-
-<p><span  class="math">\[f(x) = max(0, x)\]</span></p>
-
-<ul>
-<li>Output range: [0, $+\infty$]</li>
-<li>Metrics:
-
-<ul>
-<li>Does not saturate (in +region).</li>
-<li>It is very computationally efficient.</li>
-<li>It converges much faster than sigmoid/tanh in practive. (e.g. 6x)</li>
-</ul></li>
-<li>Demetrics:
-
-<ul>
-<li>Not zero-centered outputs</li>
-<li>An annoyance: in the negative region, the gradients will become zero.</li>
-<li>Sometimes the ReLU will be dead. Therefore, people like to initialize ReLU neurons with slightly positive biases (e.g. 0.01).
-<figure><img src="ReLU2.jpg?height=100px&amp;width=100px" alt="Dead ReLU"></figure></li>
-</ul></li>
-</ul>
-
-<h3 id="reference">Reference</h3>
-
-<p>[1] <a href="http://cs231n.stanford.edu/slides/2020/lecture_7.pdf">http://cs231n.stanford.edu/slides/2020/lecture_7.pdf</a>
-[2]</p>
-
+    
 </section>
 
 
